@@ -1,0 +1,23 @@
+# Tiny Flask API
+
+
+## Commands:
+
+- **Health:**
+  - curl http://127.0.0.1:8000/api/health
+
+- **list tasks**
+  - curl http://127.0.0.1:8000/api/tasks
+
+- **filter:**
+  - curl "http://127.0.0.1:8000/api/tasks?done=true"
+
+- **create:**
+  - curl -X POST http://127.0.0.1:8000/api/tasks \
+      -H "Content-Type: application/json" \
+      -d '{"title": "Ship my first Flask API"}'
+
+- **update:**
+  - curl -X PATCH http://127.0.0.1:8000/api/tasks/1 \
+    -H "Content-Type: application/json" \
+    -d '{"done": true}'
