@@ -22,3 +22,10 @@
   - curl -X PATCH http://127.0.0.1:8000/api/tasks/1 \
     -H "Content-Type: application/json" \
     -d '{"done": true}'
+
+
+## Deps
+
+- pip install Flask flask-cors python-dotenv
+
+- pip freeze > requirements.txt
