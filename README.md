@@ -1,5 +1,6 @@
 # Tiny Flask API
 
+- Made for fun to test basic curl commands on a flask API.
 
 ## Commands:
 
