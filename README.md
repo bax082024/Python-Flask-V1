@@ -16,7 +16,7 @@
 - **create:**
   - curl -X POST http://127.0.0.1:8000/api/tasks \
       -H "Content-Type: application/json" \
-      -d '{"title": "Ship my first Flask API"}'
+      -d '{"title": "replace with title you want"}'
 
 - **update:**
   - curl -X PATCH http://127.0.0.1:8000/api/tasks/1 \
