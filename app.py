@@ -3,9 +3,9 @@ from flask import Flask, jsonify, request
 from flask_cors import CORS
 
 app = Flask(__name__)
-CORS(app)  # allow requests from your frontend during development
+CORS(app)  # allow requests from your frontend 
 
-# simple in-memory store (swap with a DB later)
+# memory storage
 tasks = [
     {"id": 1, "title": "Learn Flask", "done": False},
     {"id": 2, "title": "Build an API", "done": True},
@@ -23,7 +23,7 @@ def bad_request(msg):
 def health():
     return jsonify(status="ok")
 
-# list tasks (supports ?done=true/false)
+# list tasks
 @app.get("/api/tasks")
 def list_tasks():
     done = request.args.get("done")
@@ -54,7 +54,7 @@ def create_task():
     tasks.append(task)
     return jsonify(task), 201
 
-# update task (PUT = full update; PATCH = partial)
+# update task
 @app.put("/api/tasks/<int:task_id>")
 @app.patch("/api/tasks/<int:task_id>")
 def update_task(task_id):
@@ -64,14 +64,13 @@ def update_task(task_id):
 
     body = request.get_json(silent=True) or {}
     if request.method == "PUT":
-        # require both fields
         if "title" not in body or "done" not in body:
             return bad_request("PUT requires title and done")
         if not isinstance(body["title"], str) or not isinstance(body["done"], bool):
             return bad_request("title must be string; done must be boolean")
         task["title"] = body["title"].strip()
         task["done"] = body["done"]
-    else:  # PATCH
+    else:
         if "title" in body:
             if not isinstance(body["title"], str):
                 return bad_request("title must be string")
